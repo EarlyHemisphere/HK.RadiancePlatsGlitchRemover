@@ -20,7 +20,7 @@ namespace HK.RadiancePlatsGlitchRemover {
         }
 
         public override string GetVersion(){
-            return FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(RadiancePlatsGlitchRemover)).Location).FileVersion;
+            return "1.0.0.0";
         }
 
         private void AfterSaveGameLoad(SaveGameData _) {
