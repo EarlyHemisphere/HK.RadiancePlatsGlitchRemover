@@ -14,45 +14,56 @@ namespace HK.RadiancePlatsGlitchRemover {
         public void OnEnableFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
             orig(self);
 
-            if (self.FsmName == "Attack Choices" && self.gameObject.name == "Absolute Radiance") {
-                fsm = self;
+            if (self.gameObject.name == "Absolute Radiance") {
+                if (self.FsmName == "Attack Choices") {
+                    fsm = self;
 
-                self.InsertAction("L or R Choice", new CallMethod {
-                    behaviour = this,
-                    methodName = "SwordWallAttack",
-                    parameters = new FsmVar[0],
-                    everyFrame = false
-                }, 0);
-                self.AddAction("Eye Beam Wait", new CallMethod {
-                    behaviour = this,
-                    methodName = "NonSwordWallAttack",
-                    parameters = new FsmVar[0],
-                    everyFrame = false
-                });
-                self.AddAction("Beam Sweep L 2", new CallMethod {
-                    behaviour = this,
-                    methodName = "NonSwordWallAttack",
-                    parameters = new FsmVar[0],
-                    everyFrame = false
-                });
-                self.AddAction("Beam Sweep R 2", new CallMethod {
-                    behaviour = this,
-                    methodName = "NonSwordWallAttack",
-                    parameters = new FsmVar[0],
-                    everyFrame = false
-                });
-                self.AddAction("Nail Fan Wait", new CallMethod {
-                    behaviour = this,
-                    methodName = "NonSwordWallAttack",
-                    parameters = new FsmVar[0],
-                    everyFrame = false
-                });
-                self.AddAction("Orb Wait", new CallMethod {
-                    behaviour = this,
-                    methodName = "NonSwordWallAttack",
-                    parameters = new FsmVar[0],
-                    everyFrame = false
-                });
+                    self.InsertAction("L or R Choice", new CallMethod {
+                        behaviour = this,
+                        methodName = "SwordWallAttack",
+                        parameters = new FsmVar[0],
+                        everyFrame = false
+                    }, 0);
+                    self.AddAction("Eye Beam Wait", new CallMethod {
+                        behaviour = this,
+                        methodName = "NonSwordWallAttack",
+                        parameters = new FsmVar[0],
+                        everyFrame = false
+                    });
+                    self.AddAction("Beam Sweep L 2", new CallMethod {
+                        behaviour = this,
+                        methodName = "NonSwordWallAttack",
+                        parameters = new FsmVar[0],
+                        everyFrame = false
+                    });
+                    self.AddAction("Beam Sweep R 2", new CallMethod {
+                        behaviour = this,
+                        methodName = "NonSwordWallAttack",
+                        parameters = new FsmVar[0],
+                        everyFrame = false
+                    });
+                    self.AddAction("Nail Fan Wait", new CallMethod {
+                        behaviour = this,
+                        methodName = "NonSwordWallAttack",
+                        parameters = new FsmVar[0],
+                        everyFrame = false
+                    });
+                    self.AddAction("Orb Wait", new CallMethod {
+                        behaviour = this,
+                        methodName = "NonSwordWallAttack",
+                        parameters = new FsmVar[0],
+                        everyFrame = false
+                    });
+                }
+
+                if (self.FsmName == "Control") {
+                    self.AddAction("Stun1 Roar", new CallMethod {
+                        behaviour = this,
+                        methodName = "PreventStuckGlitch",
+                        parameters = new FsmVar[0],
+                        everyFrame = false
+                    });
+                }
             }
         }
 
@@ -66,6 +77,10 @@ namespace HK.RadiancePlatsGlitchRemover {
 
         public void NonSwordWallAttack() {
             lastAttackWasSwordWalls = false;
+        }
+
+        public void PreventStuckGlitch() {
+            GameObject.Find("Absolute Radiance").LocateMyFSM("Control").FsmVariables.GetFsmBool("Please Cast").Value = false;
         }
     }
 }
