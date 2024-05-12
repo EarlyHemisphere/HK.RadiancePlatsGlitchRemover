@@ -10,7 +10,7 @@
   <PropertyGroup>
     <RootNamespace>RadiancePlatsGlitchRemover</RootNamespace>
     <AssemblyName>RadiancePlatsGlitchRemover</AssemblyName>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <AssemblyTitle>RadiancePlatsGlitchRemover</AssemblyTitle>
     <Product>RadiancePlatsGlitchRemover</Product>
     <Description>A Hollow Knight Mod</Description>
@@ -77,7 +77,7 @@
       <HintPath>$(HollowKnightRefs)/PlayMaker.dll</HintPath>
     </Reference>
     <Reference Include="SFCore">
-      <HintPath>$(HollowKnightRefs)/Mods/SFCore.dll</HintPath>
+      <HintPath>$(HollowKnightRefs)/Mods/SFCore/SFCore.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition">
       <HintPath>$(HollowKnightRefs)/System.ComponentModel.Composition.dll</HintPath>
@@ -309,6 +309,12 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>$(HollowKnightRefs)/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp">
+      <HintPath>$(HollowKnightRefs)/MMHOOK_Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_PlayMaker">
+      <HintPath>$(HollowKnightRefs)/MMHOOK_PlayMaker.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

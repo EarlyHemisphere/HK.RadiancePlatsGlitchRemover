@@ -13,8 +13,8 @@ namespace HK.RadiancePlatsGlitchRemover {
 
             Log("Initalizing.");
 
-            ModHooks.Instance.AfterSavegameLoadHook += AfterSaveGameLoad;
-            ModHooks.Instance.NewGameHook += AddGlitchRemoverComponent;
+            ModHooks.AfterSavegameLoadHook += AfterSaveGameLoad;
+            ModHooks.NewGameHook += AddGlitchRemoverComponent;
 
             Log("Initialized.");
         }
