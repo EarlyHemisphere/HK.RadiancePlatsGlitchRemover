@@ -68,7 +68,7 @@ namespace HK.RadiancePlatsGlitchRemover {
         }
 
         public void SwordWallAttack() {
-            if (lastAttackWasSwordWalls && fsm != null) {
+            if (lastAttackWasSwordWalls && fsm != null && RadiancePlatsGlitchRemover.globalSettings.preventSwordWallSpam) {
                 fsm.SetState("A2 Choice");
             } else {
                 lastAttackWasSwordWalls = true;
@@ -80,7 +80,9 @@ namespace HK.RadiancePlatsGlitchRemover {
         }
 
         public void PreventStuckGlitch() {
-            GameObject.Find("Absolute Radiance").LocateMyFSM("Control").FsmVariables.GetFsmBool("Please Cast").Value = false;
+            if (RadiancePlatsGlitchRemover.globalSettings.preventStuckBehavior) {
+                GameObject.Find("Absolute Radiance").LocateMyFSM("Control").FsmVariables.GetFsmBool("Please Cast").Value = false;
+            }
         }
     }
 }
